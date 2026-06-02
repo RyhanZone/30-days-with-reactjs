@@ -8,7 +8,19 @@ function App() {
   const [count, setcount] = useState(0);
   const [minvalue, setminvalue] = useState(0);
   const [maxvalue, setmaxvalue] = useState(100);
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
+  function toggleTheme() {
+    setTheme((prev) => (prev === "light" ? "dark" : "light"));
+  }
+
+  useEffect(() => {
+    document.documentElement.classList.remove("light", "dark");
+
+    document.documentElement.classList.add(theme);
+
+    localStorage.setItem("theme", theme);
+  }, [theme]);
   function valueincrease() {
     setcount((prev) => (prev < maxvalue ? prev + 1 : prev));
   }
@@ -51,7 +63,7 @@ function App() {
   return (
     <div className="min-h-screen bg-zinc-100 dark:bg-[#0f172a] text-black dark:text-white p-5 transition-all duration-300">
       <div className="max-w-7xl mx-auto border border-zinc-300 dark:border-zinc-700 rounded-3xl overflow-hidden bg-white dark:bg-[#111827] shadow-xl">
-        <Header />
+        <Header theme={theme} toggleTheme={toggleTheme} />
 
         <div className="grid grid-cols-1 lg:grid-cols-[250px_1fr_250px] gap-5 p-5">
           <LeftSidebar />
