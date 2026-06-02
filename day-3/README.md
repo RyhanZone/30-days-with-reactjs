@@ -8,7 +8,7 @@ This project is part of my **30 Days With React Challenge** 🚀
 
 ## 📸 Project Screenshot
 
-![Counter App Screenshot](https://i.postimg.cc/KYLbGNYY/Screenshot-2026-06-01-210908.png)
+![Counter App Screenshot](https://i.postimg.cc/LX9JY8QW/Screenshot-2026-06-02-214730.png)
 
 ---
 
