@@ -50,7 +50,7 @@ Inside this repository, I will upload:
 |---|---|---|
 | Day 01 | Todo App | ✅ Completed |
 | Day 02 | Tic Tac Toi game | ✅ Completed |
-| Day 03 | Coming Soon | ⏳ |
+| Day 03 | Counter Application | ✅ Completed |
 | Day 04 | Coming Soon | ⏳ |
 | Day 05 | Coming Soon | ⏳ |
 | Day 06 | Coming Soon | ⏳ |
