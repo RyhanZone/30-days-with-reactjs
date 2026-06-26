@@ -13,10 +13,10 @@ export default function ForecastCard({ hour }) {
       }`}
     >
       <span className={`text-xs font-semibold ${isNow ? "text-accent-500" : "text-slate-400"}`}>
-        {hour.time}
+        20AM
       </span>
       <WeatherIcon icon={hour.icon} className="h-7 w-7" />
-      <span className="text-sm font-bold text-white">{hour.temp}°C</span>
+      <span className="text-sm font-bold text-white">20°C</span>
     </div>
   );
 }

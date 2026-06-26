@@ -5,15 +5,16 @@ import MainWeather from "../components/weather/MainWeather.jsx";
 import WeatherStats from "../components/weather/WeatherStats.jsx";
 import ForecastSection from "../components/weather/ForecastSection.jsx";
 import AlertBar from "../components/weather/AlertBar.jsx";
+import { useEffect } from "react";
 import {
   headerInfo,
   mainWeather,
   weatherStats,
   hourlyForecast,
-  alertMessage,
 } from "../data/weatherData.js";
 
 export default function WeatherDashboard() {
+  
   return (
     <div className="min-h-screen w-full bg-sky-night px-3 py-4 sm:px-6 sm:py-6 lg:px-8">
       {/* Ambient background glow, purely decorative */}
@@ -47,7 +48,7 @@ export default function WeatherDashboard() {
           </div>
 
           {/* Alert bar */}
-          <AlertBar message={alertMessage} />
+          <AlertBar/>
         </main>
       </div>
     </div>
