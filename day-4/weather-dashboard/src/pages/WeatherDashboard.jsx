@@ -5,7 +5,7 @@ import MainWeather from "../components/weather/MainWeather.jsx";
 import WeatherStats from "../components/weather/WeatherStats.jsx";
 import ForecastSection from "../components/weather/ForecastSection.jsx";
 import AlertBar from "../components/weather/AlertBar.jsx";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   headerInfo,
   mainWeather,
@@ -14,7 +14,15 @@ import {
 } from "../data/weatherData.js";
 
 export default function WeatherDashboard() {
-  
+  let [Weather , setWeather] = useState(null);
+  useEffect(()=>{
+    fetch('https://api.openweathermap.org/data/2.5/forecast?q=Dhaka&appid=8fd153f366db70af6384ab1097d83eb7&units=metric')
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      setWeather(data);
+    });
+  },[]);
   return (
     <div className="min-h-screen w-full bg-sky-night px-3 py-4 sm:px-6 sm:py-6 lg:px-8">
       {/* Ambient background glow, purely decorative */}
