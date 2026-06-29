@@ -1,8 +1,7 @@
 // src/components/weather/ForecastCard.jsx
 import WeatherIcon from "../ui/WeatherIcon.jsx";
 
-export default function ForecastCard({ hour }) {
-  const isNow = hour.time === "Now";
+export default function ForecastCard({ hour , isNow}) {
 
   return (
     <div
@@ -13,10 +12,10 @@ export default function ForecastCard({ hour }) {
       }`}
     >
       <span className={`text-xs font-semibold ${isNow ? "text-accent-500" : "text-slate-400"}`}>
-        20AM
+        {hour?.dt_txt?.split(" ")[1]?.split(":")[0]}
       </span>
-      <WeatherIcon icon={hour.icon} className="h-7 w-7" />
-      <span className="text-sm font-bold text-white">20°C</span>
+      <WeatherIcon icon={hour?.weather?.[0]?.icon} className="h-7 w-7" />
+      <span className="text-sm font-bold text-white">{Math?.floor(hour?.main?.temp)}°C</span>
     </div>
   );
 }

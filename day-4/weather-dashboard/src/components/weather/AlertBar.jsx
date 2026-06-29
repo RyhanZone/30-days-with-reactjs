@@ -6,10 +6,12 @@ import { X, Umbrella } from "lucide-react";
  * Static alert/notification strip. Dismiss button only toggles
  * local visibility state — no logic beyond that.
  */
-export default function AlertBar() {
+export default function AlertBar({ message }) {
   const [visible, setVisible] = useState(true);
 
-  if (!visible) return null;
+  if(!visible || message == 0){
+    return null
+  }
 
   return (
     <div className="glass-soft mx-5 mb-5 flex items-center justify-between gap-4 rounded-xl px-4 py-3.5 sm:mx-6 sm:mb-6">
@@ -17,7 +19,7 @@ export default function AlertBar() {
         <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-accent-500 to-accent-600 text-white shadow-md shadow-accent-500/30">
           <Umbrella className="h-4 w-4" />
         </span>
-        <p className="text-sm text-slate-200">There is a chance of rain around 3 PM. Carry an umbrella!</p>
+        <p className="text-sm text-slate-200">{message}</p>
       </div>
 
       <button

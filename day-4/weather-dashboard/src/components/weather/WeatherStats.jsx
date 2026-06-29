@@ -3,7 +3,33 @@ import { Droplet, Wind, Gauge, Eye } from "lucide-react";
 
 const ICONS = { droplet: Droplet, wind: Wind, gauge: Gauge, eye: Eye };
 
-export default function WeatherStats({ stats }) {
+export default function WeatherStats({ info }) {
+  const stats = [
+  {
+    id: 1,
+    label: "Humidity",
+    value: `${info?.main?.humidity}%`,
+    icon: "droplet",
+  },
+  {
+    id: 2,
+    label: "Wind Speed",
+    value: `${info?.wind?.speed} m/s`,
+    icon: "wind",
+  },
+  {
+    id: 3,
+    label: "Pressure",
+    value: `${info?.main?.pressure} hPa`,
+    icon: "gauge",
+  },
+  {
+    id: 4,
+    label: "Visibility",
+    value: `${info?.visibility / 1000} km`,
+    icon: "eye",
+  },
+];
   return (
     <div className="relative grid grid-cols-2 gap-3 p-5 sm:gap-4 sm:p-6 lg:grid-cols-4">
       {stats.map((stat) => {

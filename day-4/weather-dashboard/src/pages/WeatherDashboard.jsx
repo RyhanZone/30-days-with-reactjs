@@ -5,22 +5,22 @@ import MainWeather from "../components/weather/MainWeather.jsx";
 import WeatherStats from "../components/weather/WeatherStats.jsx";
 import ForecastSection from "../components/weather/ForecastSection.jsx";
 import AlertBar from "../components/weather/AlertBar.jsx";
-import { useEffect, useState } from "react";
+import { useEffect , useState } from "react";
 import {
-  headerInfo,
   mainWeather,
-  weatherStats,
-  hourlyForecast,
+  alertMessage,
 } from "../data/weatherData.js";
 
 export default function WeatherDashboard() {
-  let [Weather , setWeather] = useState(null);
+  // State to hold weather data
+  const [weatherData, setWeatherData] = useState(null);
   useEffect(()=>{
     fetch('https://api.openweathermap.org/data/2.5/forecast?q=Dhaka&appid=8fd153f366db70af6384ab1097d83eb7&units=metric')
     .then((res) => res.json())
     .then((data) => {
       console.log(data);
-      setWeather(data);
+      
+      setWeatherData(data);
     });
   },[]);
   return (
@@ -39,24 +39,24 @@ export default function WeatherDashboard() {
         <main className="glass-strong flex flex-1 flex-col overflow-y-auto rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.35)] scrollbar-thin">
           {/* Top header */}
           <div className="border-b border-white/5">
-            <WeatherHeader info={headerInfo} />
+            <WeatherHeader info={weatherData?.list?.[0]} weatherd={weatherData?.city}/>
           </div>
 
           {/* Hero weather + stats grid */}
           <div className="border-b border-white/5">
             <div className="p-5 pb-0 sm:p-6 sm:pb-0">
-              <MainWeather weather={mainWeather} />
+              <MainWeather weather={weatherData?.list?.[0]} />
             </div>
-            <WeatherStats stats={weatherStats} />
+            <WeatherStats info={weatherData?.list?.[0]} />
           </div>
 
           {/* Today's forecast */}
           <div className="border-b border-white/5">
-            <ForecastSection forecast={hourlyForecast} />
+            <ForecastSection forecast={weatherData?.list} />
           </div>
 
           {/* Alert bar */}
-          <AlertBar/>
+          <AlertBar message={weatherData?.message} />
         </main>
       </div>
     </div>

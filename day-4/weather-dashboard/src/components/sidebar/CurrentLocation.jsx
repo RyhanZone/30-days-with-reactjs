@@ -3,7 +3,7 @@ import { LocateFixed, MapPin } from "lucide-react";
 import SectionTitle from "../ui/SectionTitle.jsx";
 import WeatherIcon from "../ui/WeatherIcon.jsx";
 
-export default function CurrentLocation() {
+export default function CurrentLocation({ location }) {
   return (
     <div className="flex flex-col gap-3">
       <SectionTitle icon={LocateFixed}>Current Location</SectionTitle>
@@ -14,13 +14,13 @@ export default function CurrentLocation() {
             <MapPin className="h-4.5 w-4.5" />
           </span>
           <div>
-            <p className="text-sm font-semibold text-slate-100">Dhaka</p>
-            <p className="text-xs text-slate-400">Bangladesh</p>
+            <p className="text-sm font-semibold text-slate-100">{location.city}</p>
+            <p className="text-xs text-slate-400">{location.country}</p>
           </div>
         </div>
 
         <div className="flex items-center gap-2">
-          <span className="text-sm font-semibold text-slate-100">31°C</span>
+          <span className="text-sm font-semibold text-slate-100">{location.temp}°C</span>
           <WeatherIcon icon={location.icon} className="h-5 w-5" />
         </div>
       </div>

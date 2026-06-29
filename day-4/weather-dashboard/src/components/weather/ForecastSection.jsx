@@ -12,8 +12,8 @@ export default function ForecastSection({ forecast }) {
       </div>
 
       <div className="flex gap-3 overflow-x-auto pb-1 scrollbar-thin sm:gap-4">
-        {forecast.map((hour) => (
-          <ForecastCard key={hour.id} hour={hour} />
+        {forecast?.map((hour , index) => (
+          <ForecastCard key={hour?.dt} hour={hour} isNow={index === 0}/>
         ))}
       </div>
     </div>
