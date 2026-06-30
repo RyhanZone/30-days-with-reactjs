@@ -1,10 +1,3 @@
-// src/components/ui/GlassCard.jsx
-
-/**
- * Reusable glassmorphism card wrapper.
- * `strong` uses a slightly more opaque glass treatment for hero/primary surfaces.
- * `as` lets the wrapper element be swapped (e.g. "section", "aside").
- */
 export default function GlassCard({
   children,
   className = "",
@@ -15,8 +8,10 @@ export default function GlassCard({
   return (
     <Tag
       className={`${
-        strong ? "glass-strong" : "glass"
-      } rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.35)] ${className}`}
+        strong
+          ? "glass-strong dark:glass-strong light:bg-white light:border light:border-slate-200"
+          : "glass dark:glass light:bg-white/90 light:border light:border-slate-200"
+      } rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.35)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.35)] light:shadow-lg ${className}`}
       {...props}
     >
       {children}
