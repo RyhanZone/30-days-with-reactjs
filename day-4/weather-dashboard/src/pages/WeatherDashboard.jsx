@@ -6,20 +6,31 @@ import WeatherStats from "../components/weather/WeatherStats.jsx";
 import ForecastSection from "../components/weather/ForecastSection.jsx";
 import AlertBar from "../components/weather/AlertBar.jsx";
 import { useEffect , useState } from "react";
-import {
-  mainWeather,
-  alertMessage,
-} from "../data/weatherData.js";
+
 
 export default function WeatherDashboard() {
   // State to hold weather data
   const [weatherData, setWeatherData] = useState(null);
-  useEffect(()=>{
-    fetch('https://api.openweathermap.org/data/2.5/forecast?q=Dhaka&appid=8fd153f366db70af6384ab1097d83eb7&units=metric')
+  const [curretnsearch , setcurretnsearch] = useState([]);
+  
+  function searching(text){
+     fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${text}&appid=8fd153f366db70af6384ab1097d83eb7&units=metric`)
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
-      
+      setWeatherData(data);
+    });
+      const searchData = {
+        city: weatherData.city,
+        weather: weatherData.list[0],
+      };
+
+    setcurretnsearch([ searchData , ...curretnsearch]);
+  }
+
+  useEffect(()=>{
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=dhaka&appid=8fd153f366db70af6384ab1097d83eb7&units=metric`)
+    .then((res) => res.json())
+    .then((data) => {
       setWeatherData(data);
     });
   },[]);
@@ -33,7 +44,7 @@ export default function WeatherDashboard() {
 
       <div className="mx-auto flex w-full max-w-[1500px] flex-col gap-5 lg:h-[calc(100vh-3rem)] lg:flex-row">
         {/* Left Sidebar (~30%) */}
-        <Sidebar />
+        <Sidebar data={weatherData} currentsdata={curretnsearch} searchfunction={searching}/>
 
         {/* Right Content Area (~70%) */}
         <main className="glass-strong flex flex-1 flex-col overflow-y-auto rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.35)] scrollbar-thin">

@@ -14,14 +14,14 @@ export default function CurrentLocation({ location }) {
             <MapPin className="h-4.5 w-4.5" />
           </span>
           <div>
-            <p className="text-sm font-semibold text-slate-100">{location.city}</p>
-            <p className="text-xs text-slate-400">{location.country}</p>
+            <p className="text-sm font-semibold text-slate-100">{location?.city?.name}</p>
+            <p className="text-xs text-slate-400">{location?.city?.country}</p>
           </div>
         </div>
 
         <div className="flex items-center gap-2">
-          <span className="text-sm font-semibold text-slate-100">{location.temp}°C</span>
-          <WeatherIcon icon={location.icon} className="h-5 w-5" />
+          <span className="text-sm font-semibold text-slate-100">{Math.floor(location?.list?.[0]?.main?.temp)}°C</span>
+          <WeatherIcon icon={location?.list?.[0]?.weather?.icon} className="h-5 w-5" />
         </div>
       </div>
     </div>

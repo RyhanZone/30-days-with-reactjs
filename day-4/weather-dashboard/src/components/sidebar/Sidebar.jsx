@@ -4,9 +4,9 @@ import SearchBox from "./SearchBox.jsx";
 import CurrentLocation from "./CurrentLocation.jsx";
 import RecentSearches from "./RecentSearches.jsx";
 import ThemeToggle from "./ThemeToggle.jsx";
-import { currentLocation, recentSearches } from "../../data/weatherData.js";
+import {recentSearches } from "../../data/weatherData.js";
 
-export default function Sidebar() {
+export default function Sidebar({ data, searchfunction, currentsdata}) {
   return (
     <aside className="glass-strong flex h-full w-full flex-col rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.35)] lg:w-[320px] xl:w-[340px]">
       {/* Logo + Search (left header section) */}
@@ -20,17 +20,17 @@ export default function Sidebar() {
           </h1>
         </div>
 
-        <SearchBox />
+        <SearchBox sfunction={searchfunction}/>
       </div>
 
       {/* Current location */}
       <div className="border-b border-white/5 p-5">
-        <CurrentLocation location={currentLocation} />
+        <CurrentLocation location={data} />
       </div>
 
       {/* Recent searches — fills remaining space */}
       <div className="flex flex-1 flex-col gap-3 overflow-hidden p-5">
-        <RecentSearches searches={recentSearches} />
+        <RecentSearches recentsearchesdata={currentsdata}/>
       </div>
 
       {/* Theme switch */}

@@ -21,14 +21,14 @@ export default function MainWeather({ weather }) {
 
           <div>
             <p className="text-glow text-5xl font-extrabold text-white sm:text-6xl">
-              {weather?.main?.temp}
+              {Math.floor(weather?.main?.temp)}
               <span className="align-top text-3xl sm:text-4xl">°C</span>
             </p>
           </div>
         </div>
 
         <div>
-          <h2 className="text-xl font-bold text-white sm:text-2xl">{weather?.weather?.description}</h2>
+          <h2 className="text-xl font-bold text-white sm:text-2xl">{weather?.weather[0]?.description}</h2>
           <p className="mt-1 text-sm text-slate-300">Feels like {weather?.main?.feels_like}°C</p>
         </div>
       </div>
